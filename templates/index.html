@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Podcast</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <form action="/" method="post">
+      <input type="text" name="url" placeholder="Enter XML URL">
+      <input type="submit" value="Submit">
+    </form>
+    <h1>{{ title }}</h1>
+    <ul id="episodes">
+      {% for date, episode_title in episodes %}
+        <li>{{ date }} - {{ episode_title }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
