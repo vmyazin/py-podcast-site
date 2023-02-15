@@ -46,5 +46,10 @@ def index():
 
     return render_template('index.html', podcasts=PODCASTS, data=data)
 
+@app.route('/remove_data', methods=['GET'])
+def remove_data():
+    data = None
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)

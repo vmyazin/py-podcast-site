@@ -16,39 +16,50 @@
           <div class="d-flex justify-content-center mb-4">
             <form action="/" method="post" class="form-row align-items-center">
               <div class="col-auto">
-                <input type="text" name="url" placeholder="Enter XML URL" class="form-control">
+                <input type="text" name="url" placeholder="Podcast XML URL" class="form-control">
               </div>
               <div class="col-auto">
-                <input type="submit" value="Submit" class="btn btn-primary">
-              </div>      
+                <input type="submit" value="Load" class="btn btn-primary">
+              </div>
             </form>  
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container mb-5">
-      <div class="row" style="max-width: 700px;">
-        <div class="col-4">
-          <img src="{{ data.image_url }}" alt="Podcast Image" class="img-fluid">
-        </div>
-        <div class="col-8">
-          <h2 class="mb-2">{{ data.title }}</h2>
-          <p>{{ data.description }}</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <ul id="episodes">
-            {% for date, episode_title in data.episodes %}
-              <li>{{ date|default("Invalid date") }} - {{ episode_title }}</li>
-            {% endfor %}
-          </ul>
+    {% if data %}
+      <div class="container mb-5">
+        <div class="row" style="max-width: 700px;">
+          <div class="col-4">
+            <img src="{{ data.image_url }}" alt="Podcast Image" class="img-fluid">
+          </div>
+          <div class="col-8">
+            <h2 class="mb-2">{{ data.title }}</h2>
+            <p>{{ data.description }}</p>
+          </div>
         </div>
       </div>
-    </div>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <ul id="episodes">
+              {% for date, episode_title in data.episodes %}
+                <li>{{ date|default("Invalid date") }} - {{ episode_title }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-auto">
+            <form action="{{ url_for('remove_data') }}" method="get">
+              <input type="submit" value="Remove Data" class="btn btn-secondary">
+            </form>
+          </div>  
+        </div>
+      </div>
+    {% endif %}
   </body>
 </html>
