@@ -1,7 +1,17 @@
+import sys
+sys.path.append('/var/www/py-podcast-site/config')
+
 import xml.etree.ElementTree as ET
 import requests
 from flask import Flask, render_template, request, redirect, url_for
-from config.podcasts_list import PODCASTS
+#from config.podcasts_list import PODCASTS
+PODCASTS = [
+    'http://podcasternews.com/feed/',
+    'https://www.techlifepodcast.com/podcast-feed.xml',
+    'http://origin.podnews.net/rss/',
+    'http://feeds.feedburner.com/ThisWeekInPodcasting',
+    'https://theaudacitytopodcast.com/feed/'
+]
 
 app = Flask(__name__)
 
