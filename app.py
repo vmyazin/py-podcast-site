@@ -46,6 +46,10 @@ def index():
 
     return render_template('index.html', podcasts=PODCASTS, data=data)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/remove_data', methods=['GET'])
 def remove_data():
     data = None
