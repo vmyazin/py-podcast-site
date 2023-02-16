@@ -16,7 +16,7 @@
           <div class="d-flex justify-content-center mb-4">
             <form action="/" method="post" class="form-row align-items-center">
               <div class="col-auto">
-                <input type="text" name="url" placeholder="Podcast XML URL" class="form-control">
+                <input type="text" name="url" placeholder="Podcast XML URL" class="form-control" value="{{ request.form.get('url') }}" onclick="this.select();">
               </div>
               <div class="col-auto">
                 <input type="submit" value="Load" class="btn btn-primary">
