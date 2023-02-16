@@ -4,7 +4,7 @@
 import xml.etree.ElementTree as ET
 import requests
 import datetime
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 #from config.podcasts_list import PODCASTS
 PODCASTS = [
     'http://podcasternews.com/feed/',
@@ -15,6 +15,11 @@ PODCASTS = [
 ]
 
 app = Flask(__name__)
+
+# challenge response URL for certbot
+@app.route('/.well-known/acme-challenge/<challenge>')
+def acme_challenge(challenge):
+    return challenge + '.4gHI70ubmKiSLJ0vjFjwoMGEjl0CnQ1y6f0eefmhajE'
 
 @app.route('/', methods=['GET', 'POST'])
 
